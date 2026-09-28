@@ -1,0 +1,17 @@
+{
+  "dispatch_rule": {
+    "rule": {
+      "dispatchRuleIndividual": {
+        "roomPrefix": "call-"
+      }
+    },
+    "name": "Headlocks phone -> Riya",
+    "trunk_ids": ["ST_REPLACE_WITH_TRUNK_ID"],
+    "roomConfig": {
+      "agents": [{
+        "agentName": "headlocks-receptionist",
+        "metadata": "{\"agent\": \"riya\", \"mode\": \"voice\"}"
+      }]
+    }
+  }
+}

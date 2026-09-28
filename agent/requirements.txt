@@ -1,0 +1,3 @@
+livekit-agents[sarvam,openai,silero,turn-detector]~=1.8
+supabase>=2.31
+python-dotenv>=1.0

@@ -1,0 +1,7 @@
+{
+  "trunk": {
+    "name": "Plivo inbound - Headlocks",
+    "numbers": ["+91XXXXXXXXXX"],
+    "krispEnabled": true
+  }
+}
