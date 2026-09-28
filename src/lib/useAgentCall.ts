@@ -169,6 +169,18 @@ export function useAgentCall({ role = "caller" }: Options = {}) {
         await room.startAudio().catch(() => undefined);
         setStartedAt(Date.now());
         setStatus(room.state === ConnectionState.Connected ? "connected" : "connecting");
+
+        // If no agent joins, say so instead of showing "Listening…" forever.
+        if (role === "caller") {
+          window.setTimeout(() => {
+            if (roomRef.current !== room) return;
+            const agentHere = Array.from(room.remoteParticipants.values()).some((p) => p.kind === ParticipantKind.AGENT);
+            if (!agentHere) {
+              setError("The receptionist didn't join the call. Please try again in a minute — if it keeps happening, the agent may be offline.");
+              void room.disconnect();
+            }
+          }, 20000);
+        }
       } catch (e) {
         setError(e instanceof Error ? e.message : String(e));
         setStatus("error");
